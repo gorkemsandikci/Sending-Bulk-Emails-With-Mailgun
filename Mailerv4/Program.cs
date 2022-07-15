@@ -120,7 +120,7 @@ You can contact us for all and more.<br>
 
                     client.Connect("smtp.eu.mailgun.org", 587, false);
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
-                    client.Authenticate("postmaster@asilpark.com", "49ace8614ef41e9fe810bce685d32874-e2e3d8ec-d6b089cc");
+                    client.Authenticate("postmaster@domain.com", "49ace8614ef41e9fe810bce685d32874-e2e3d8ec-d6b089cc");
 
                     client.Send(mail);
                     client.Disconnect(true);
