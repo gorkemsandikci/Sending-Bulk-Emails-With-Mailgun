@@ -19,9 +19,9 @@ public class SmtpMessageChunk
 
     public static void SendMessageSmtp()
     {
-        Console.WriteLine("Mail listesinin içinde bulunduğu dosya yolu (C:\\Users\\STUDENT1\\Desktop\\okunacakmetin.txt): ");
+        Console.WriteLine("Mail listesinin içinde bulunduğu dosya yolu (C:\\Users\\Gorke\\Desktop\\okunacakmetin.txt): ");
         string okunacakMetin = Console.ReadLine();
-        Console.WriteLine("Eklenecek PDF'in bulunduğu dosya yolu  (C:\\Users\\STUDENT1\\Desktop\\asil-playground-equipments-price-list.pdf): ");
+        Console.WriteLine("Eklenecek PDF'in bulunduğu dosya yolu  (C:\\Users\\Gorke\\Desktop\\price-list.pdf): ");
         string eklenecekDosya = Console.ReadLine();
 
         List<string> satirlarList = new List<string>();
@@ -39,12 +39,12 @@ public class SmtpMessageChunk
                 // Compose a message
                 MimeMessage mail = new MimeMessage();
 
-                mail.From.Add(new MailboxAddress("Asilpark", "export@asilpark.com"));
+                mail.From.Add(new MailboxAddress("Görkem", "gorkem@gorkemnet.com"));
 
                 mail.To.Add(new MailboxAddress(satir.Split("@")[0], satir.ToLower()));
 
                 #region Mail Subject
-                mail.Subject = "Children's Playground Equipment Price Offer";
+                mail.Subject = "Price Offer";
                 #endregion
                 #region Message Body
 
@@ -53,9 +53,6 @@ public class SmtpMessageChunk
 
     I am directing the list of children's playground materials that we produce
 in the attached file.
-
-    As Asil Park, our offer is to produce and supply all the products you
-need.
 
     We would like to meet and work with you in our commercial life that we
 started in 1992.
@@ -66,40 +63,20 @@ Istanbul-Turkey will draw your attention.
     Contact us for technical details and requests about the products you are
 interested in.
 
-    As Asil Park Children's Playground Equipment, we wish you a healthy day.
-
-    Pleased to meet you.
-
-    Respects,
-
-    CAN KAYGUSUZ.
-
-    “The Turkish Undersecretariat in your country provided the information that it would be beneficial for us to contact you. For your information.
-    'Metal children's playground, swing, ball pool, seesaw, rubber flooring, slide...
-    you can contact us for all and more.
+    Görkem SANDIKCI.
 
     Our price offers are valid for 15 (fifteen) days.
 ";
                 builder.HtmlBody = string.Format(@"<p>Good Day Dear Sir,<br><br>
 I am directing the list of children's playground materials that we produce
 in the attached file.<br>
- As Asil Park, our offer is to produce and supply all the products you
-need.<br>
 We would like to meet and work with you in our commercial life that we
 started in 1992.<br>
  The material quality and prices of our products that we produce in
 Istanbul-Turkey will draw your attention.<br>
     Contact us for technical details and requests about the products you are
 interested in.<br>
- As Asil Park Children's Playground Equipment, we wish you a healthy day.
- Pleased to meet you.<br>
- Respects,<br><br>
-CAN KAYGUSUZ.<br>
-<br>
-“The Turkish Undersecretariat in your country provided the information
-that it would be beneficial for us to contact you. For your information.<br>
-'Metal children's playground, swing, ball pool, seesaw, rubber flooring,slide... <br><br>
-You can contact us for all and more.<br>
+Görkem SANDIKCI.<br>
 
     Our price offers are valid for 15 (fifteen) days.<br>
 </p>");
@@ -120,7 +97,7 @@ You can contact us for all and more.<br>
 
                     client.Connect("smtp.eu.mailgun.org", 587, false);
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
-                    client.Authenticate("postmaster@domain.com", "49ace8614ef41e9fe810bce685d32874-e2e3d8ec-d6b089cc");
+                    client.Authenticate("postmaster@domain.com", "49ace8614ef41e9fe810bce685d32874-d6b089cc-e2e3d8ec");
 
                     client.Send(mail);
                     client.Disconnect(true);
